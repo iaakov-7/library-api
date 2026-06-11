@@ -5,7 +5,7 @@ The system manages books and library members, It receives HTTP requests by
 FastAPI server that connect to mysql database.
 
 ## Docker
-docker run --name newmysal -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 -d mysql:8
+docker run --name mysql-w7 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=library_db -p 3306:3306 -d mysql:8
 
 ## Folder structure
 ```
