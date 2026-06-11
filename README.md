@@ -36,7 +36,7 @@ library-api/
 id: int   
 title: varchar
 auther: varchar
-genre: enum(ction | Science | History | Other )
+genre: enum(Action | Science | History | Other )
 is_availble: boolean
 borrowed_by_member_id: int
 ```
@@ -92,7 +92,8 @@ get.('/reports/books-by-genre') = books by genre
 get.('/reports/top-member') = the most activate member
 ```
 ## System flow
-client -> router(FastAPI)-> memcerDB/bookDB(classes) -> DATABASE(sql)
+Client want to borrow a book -> check if member is active-> check if member has reached maximum borrows ->
+check if book is available -> book is borrowed, Client want to return a book -> check if the book is lent to the member who want to return it -> Book returned.
 
 ## How to run
 uvicorn main:app
