@@ -32,20 +32,22 @@ library-api/
 ## Tables structure
 
 ### books
+```
 id: int   
 title: varchar
 auther: varchar
 genre: enum(ction | Science | History | Other )
 is_availble: boolean
 borrowed_by_member_id: int
-
+```
 ### Members structure 
+```
 id: int 
 name: varchar 
 email: text
 is_active: boolean
 total_borrows: int
-
+```
 
 ## System rules
 1. Crete book - User send title+author+genre, System adds is_available=True, borrowed_by=NULL.
@@ -66,29 +68,32 @@ total_borrows: int
 
 ##  Endpoints
 ### Books
-
+```
 post.('/books') = create book
 get.('/books') = all books
 get.('/books/{id}') = book by id
 patch.('/books/{id}') = update book
 patch.('/books/{id}/borrow/{member_id}') = borrow to member
 patch.('/books/{id}/return/{member_id}') = return book by member 
-
+```
 ### Members
-
+```
 post.('/members') = create member
 get.('/members') = all members
 get.('members/{id}') = member by id
 patch.('members/{id}') = update member
 patch.('members/{id}/deactivate') = deactivate member
 patch.('members/{id}/activate') = activate member
-
+```
 ### Reports 
-
+```
 get.('/reports/summary') = general report
 get.('/reports/books-by-genre') = books by genre
 get.('/reports/top-member') = the most activate member
-
+```
 ## System flow
 client -> router(FastAPI)-> memcerDB/bookDB(classes) -> DATABASE(sql)
+
+## How to run
+uvicorn main:app
 
