@@ -35,4 +35,11 @@ class DBconnection:
         connection.commit() 
         cursor.close()
 
+    def close(self):
+        if self.connection.is_connected():
+            self.connection.close()
+            print("Database connection closed successfully")  
+        else:
+            print("Database connection was already closed")       
+
 db_conn = DBconnection()

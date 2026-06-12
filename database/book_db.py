@@ -1,4 +1,4 @@
-from db_connection import db_conn
+from database.db_connection import db_conn
 
 class BookDB:
     def __init__(self):
