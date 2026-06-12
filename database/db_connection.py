@@ -31,7 +31,7 @@ class DBconnection:
                     name VARCHAR(50) NOT NULL,
                     email VARCHAR(255) UNIQUE NOT NULL,
                     is_active BOOLEAN DEFAULT TRUE NOT NULL,
-                    total_borrows INT NOT NULL)""")
+                    total_borrows INT NOT NULL DEFAULT 0)""")
         connection.commit() 
         cursor.close()
 
