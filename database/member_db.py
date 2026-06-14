@@ -107,7 +107,7 @@ class MemberDB:
         cursor.execute(quary,(max_borrows,))
         top_member = cursor.fetchone()
         cursor.close()
-        return top_member       
+        return {"member_id":top_member["id"],"borrowed":top_member["total_borrows"]}       
 
 
 

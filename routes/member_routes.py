@@ -20,13 +20,13 @@ def get_member_by_id(id:int):
         raise HTTPException(404,f"Member with id {id} not found") 
     return member
 
-@router.post("")
+@router.post("",status_code=201)
 def create_member(new_member:Member):
     member = new_member.model_dump()
     try:
         new_id = db_member.create_member(member)
     except mysql.connector.errors.IntegrityError:
-          raise HTTPException(400,"This email is already exist")            
+          raise HTTPException(409,"This email is already exist")            
     return {"Success":f"Created new member with id {new_id}"} 
 
 @router.patch("/{id}")
