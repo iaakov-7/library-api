@@ -1,4 +1,5 @@
 import mysql.connector
+from logs.logger_config import logger
 
 class DBconnection:
     def __init__(self):
@@ -35,8 +36,8 @@ class DBconnection:
     def close(self):
         if self.connection.is_connected():
             self.connection.close()
-            print("Database connection closed successfully")  
+            logger.info("Database connection closed successfully")  
         else:
-            print("Database connection was already closed")       
+            logger.info("Database connection was already closed")       
 
 db_conn = DBconnection()
