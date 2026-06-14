@@ -4,7 +4,7 @@ from database.member_db import db_member
 from logs.logger_config import logger
 from utils.models import Book,UpdateBook
 
-router = APIRouter(tags=["books"])
+router = APIRouter(tags=["Books"])
 
 
 @router.get("")

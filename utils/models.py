@@ -18,4 +18,12 @@ class Book(BaseModel):
 class UpdateBook(BaseModel):
     title:str | None = None
     author:str | None = None
-    genre:Genre | None = None       
+    genre:Genre | None = None  
+
+class Member(BaseModel):  
+    name:str
+    email:str  
+
+class UpdateMember(BaseModel):
+    name:str | None = None
+    email:str | None = None             
