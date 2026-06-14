@@ -94,17 +94,17 @@ class BookDB:
         cursor.close()
         return row 
 
-    def count_by_genre(self,genre:str):  
+    def count_by_genre(self):  
         conn = self.db.get_connection()
         cursor = conn.cursor(dictionary=True)
-        quary = """SELECT COUNT(*) AS %s 
+        quary = """SELECT genre, COUNT(*) AS count 
                     FROM books 
-                    WHERE genre=%s
+                 GROUP BY genre
                 """
-        cursor.execute(quary,(genre,genre))
-        row = cursor.fetchone()
+        cursor.execute(quary)
+        rows = cursor.fetchall()
         cursor.close()
-        return row
+        return rows
     
     def count_active_borrows_by_member(self,member_id):
         conn = self.db.get_connection()

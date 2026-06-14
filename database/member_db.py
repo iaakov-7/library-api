@@ -1,4 +1,4 @@
-from db_connection import db_conn
+from database.db_connection import db_conn
 
 class MemberDB:
     def __init__(self):
@@ -77,14 +77,10 @@ class MemberDB:
     def increment_borrows(self,id:int):               
         conn = self.db.get_connection()
         cursor = conn.cursor() 
-        quary = """SELECT total_borrows FROM members
-        WHERE id= %s"""
-        cursor.execute(quary,(id,))
-        total_borrows= cursor.fetchone()[0]+1
         quary = """UPDATE members
-        SET total_borrows=%s
+        SET total_borrows=total_borrows + 1
         WHERE id=%s"""
-        cursor.execute(quary,(total_borrows,id))
+        cursor.execute(quary,(id,))
         conn.commit()
         updated = cursor.rowcount > 0
         cursor.close()
@@ -115,5 +111,6 @@ class MemberDB:
 
 
 
-member = MemberDB()
+db_member = MemberDB()
+
    
