@@ -13,7 +13,7 @@ def get_all_books():
     all_books = db_book.get_all_books()
     if len(all_books) == 0:
         logger.warning("There are no books in the library")
-    logger.info("Reed all books successfully")    
+    logger.info("Read all books successfully")    
     return all_books
 
 @router.get("/{id}")
@@ -23,7 +23,7 @@ def get_book_by_id(id:int):
     if not book:
         logger.error("Book %s not found",id)
         raise HTTPException(404,f"Book with id {id} not found")
-    logger.info("Reed book %s successfully",id) 
+    logger.info("Read book %s successfully",id) 
     return book
 
 @router.post("",status_code=201)
@@ -31,7 +31,7 @@ def create_book(new_book:Book):
     logger.info("Incoming request: create book")
     book = new_book.model_dump()
     new_id_book =db_book.create_book(book)
-    logger.info("Create book %s successfully",id)
+    logger.info("Create book %s successfully",new_id_book)
     return {"Success":f"Create a book with id {new_id_book}"}
 
 @router.patch("/{id}")

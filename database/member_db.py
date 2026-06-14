@@ -100,14 +100,12 @@ class MemberDB:
     def get_top_member(self):
         conn = self.db.get_connection()
         cursor = conn.cursor(dictionary=True)
-        cursor.execute("""SELECT MAX(total_borrows) FROM members""")
-        max_borrows = cursor.fetchone()["MAX(total_borrows)"]
-        quary = """SELECT * FROM members
-        WHERE total_borrows=%s"""
-        cursor.execute(quary,(max_borrows,))
-        top_member = cursor.fetchone()
+        quary = """SELECT id AS member_id, total_borrows AS borrowed FROM members 
+        WHERE total_borrows= (SELECT MAX(total_borrows) FROM members)"""
+        cursor.execute(quary)
+        top_member = cursor.fetchall()
         cursor.close()
-        return {"member_id":top_member["id"],"borrowed":top_member["total_borrows"]}       
+        return top_member       
 
 
 

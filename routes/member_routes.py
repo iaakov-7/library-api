@@ -61,7 +61,7 @@ def deactivate_member(id:int):
     return {"Success":"Member deactivated successfully"}
 
 @router.patch("/{id}/activate")
-def deactivate_member(id:int):
+def activate_member(id:int):
     logger.info("Incoming request: active member %s",id)
     if not db_member.get_member_by_id(id):
         logger.error("Member %s not found",id)

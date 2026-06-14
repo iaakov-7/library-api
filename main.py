@@ -12,7 +12,7 @@ async def lifespan(app:FastAPI):
     db_conn.close()
 
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(lifespan=lifespan,title="Library API")
 
 app.include_router(book_router,prefix="/books")
 app.include_router(member_router,prefix="/members")
