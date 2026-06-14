@@ -24,6 +24,8 @@ library-api/
 ├── logs/ 
 │   └── app.log 
 │   └── logger_config.py
+├── utils/
+|    └── models.py
 ├── README.md 
 ├── requirements.txt 
 └── .gitignore
