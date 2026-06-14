@@ -6,7 +6,7 @@ from routes.report_routes import router as report_router
 from database.db_connection import db_conn
 
 @asynccontextmanager
-async def lifespan():
+async def lifespan(app:FastAPI):
     db_conn.create_tables()
     yield
     db_conn.close()
